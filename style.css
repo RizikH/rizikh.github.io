@@ -1,0 +1,31 @@
+body, html{
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgba(3, 3, 3, 0.641);
+}
+header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: relative;
+    flex-direction: column;
+}
+#profile-pic{
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    object-fit: cover;
+    transition: all 0.3 ease;
+    cursor: pointer;
+    position: relative;
+}
+#welcome{
+    color: beige;
+    text-align: center;
+    padding: 0 20px;
+    font-size: large;
+}
+
