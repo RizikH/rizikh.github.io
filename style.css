@@ -1,31 +1,138 @@
-body, html{
-    margin: 0px;
-    padding: 0px;
-    height: 100%;
+/* General Reset */
+body {
+    margin: 0;
+    padding: 0;
     font-family: Arial, Helvetica, sans-serif;
-    background-color: rgba(3, 3, 3, 0.641);
+    background-color: rgba(47, 146, 153, 0.641);
 }
-header{
+
+/* Header and Profile Picture */
+header {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    position: relative;
     flex-direction: column;
-}
-#profile-pic{
-    width: 400px;
-    height: 400px;
-    border-radius: 50%;
-    object-fit: cover;
-    transition: all 0.3 ease;
-    cursor: pointer;
     position: relative;
-}
-#welcome{
-    color: beige;
-    text-align: center;
-    padding: 0 20px;
-    font-size: large;
+    padding: 20px;
+    box-sizing: border-box;
+    z-index: 1;
 }
 
+#profile-pic {
+    width: 20vw;
+    max-width: 300px;
+    height: auto;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.5s ease;
+    z-index: 0;
+}
+#work-in-progress{
+    width: 50vw;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+    position: relative;
+}
+
+/* Content Styling */
+.content {
+    border: 5px solid white;
+    background-color: white;
+    border-radius: 8px;
+    color: #333;
+    font-size: 1.2rem;
+    padding: 5vw;
+    margin: 2vw auto;
+    max-width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    line-height: 1.8;
+    text-align: left;
+}
+
+.content-text {
+    line-height: 1.6;
+    text-align: left;
+    max-width: 800px;
+    margin-bottom: 15px;
+    display: block;
+    padding: 20px;
+}
+
+/* Image Styling */
+#webdev-pic {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    display: block;
+    margin: 20px auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .content {
+        max-width: 80%;
+    }
+}
+
+@media (max-width: 768px) {
+    #profile-pic {
+        width: 30vw;
+    }
+    .content {
+        max-width: 90%;
+        padding: 10px;
+    }
+}
+
+/* Navigation Menu */
+.menu {
+    background-color: gray;
+    text-align: center;
+    padding: 15px 0;
+    position: fixed;
+    width: 100%;
+    z-index: 3;
+}
+
+.menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+}
+
+.menu li {
+    display: inline;
+    margin: 0 15px;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.menu a:hover {
+    text-decoration: underline;
+}
+
+.menu a[title='hw3'] {
+    text-decoration: line-through;
+    color: black;
+}
