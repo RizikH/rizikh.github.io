@@ -23,7 +23,6 @@ header {
     width: 100vw;
     height: 100vh;
     object-fit: cover;
-    cursor: pointer;
     position: fixed;
     top: 50%;
     left: 50%;
