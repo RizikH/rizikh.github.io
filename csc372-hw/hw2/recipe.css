@@ -44,6 +44,8 @@ section h2 {
 
 .links {
     margin: 20px 0;
+}
+.links div{
     display: flex;
     flex-direction: column;
 }
