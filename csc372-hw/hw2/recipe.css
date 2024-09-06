@@ -18,19 +18,19 @@ body {
     font-weight: bold;
 }
 
-#main-header, .header {
+header h1 {
     background-color: #F0F0F0;
     color: #a4a400;
     text-decoration: underline;
-}
-
-#main-header {
     text-align: center;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 22pt;
 }
 
-.header {
+section h2 {
+    background-color: #F0F0F0;
+    color: #a4a400;
+    text-decoration: underline;
     font-size: 18pt;
     display: inline;
     margin: 0;
@@ -42,9 +42,9 @@ body {
     margin: 20px;
 }
 
-#links {
+.links {
     margin: 20px 0;
-    display: inline;
+    display: flex;
     flex-direction: column;
 }
 
@@ -61,7 +61,7 @@ footer pre {
     font-family: monospace;
 }
 
-header, #ingredients, #recipe-conclusion {
+header, .ingredients, .recipe-conclusion {
     border-bottom: 1px solid black;
     margin-bottom: 20px;
 }
