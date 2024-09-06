@@ -1,12 +1,12 @@
-/* General Reset */
 body {
     margin: 0;
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
     background-color: rgba(47, 146, 153, 0.641);
 }
-
-/* Header and Profile Picture */
+html{
+    scroll-behavior: smooth;
+}
 header {
     display: flex;
     justify-content: center;
@@ -20,10 +20,8 @@ header {
 }
 
 #profile-pic {
-    width: 20vw;
-    max-width: 300px;
-    height: auto;
-    border-radius: 50%;
+    width: 100vw;
+    height: 100vh;
     object-fit: cover;
     cursor: pointer;
     position: fixed;
@@ -33,7 +31,26 @@ header {
     transition: opacity 0.5s ease;
     z-index: 0;
 }
-#work-in-progress{
+
+@media (max-width: 1024px) {
+    h2 {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    h2 {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    h2 {
+        font-size: 16px;
+    }
+}
+
+#work-in-progress {
     width: 50vw;
     height: auto;
     border-radius: 8px;
@@ -41,7 +58,6 @@ header {
     position: relative;
 }
 
-/* Content Styling */
 .content {
     border: 5px solid white;
     background-color: white;
@@ -71,7 +87,6 @@ header {
     padding: 20px;
 }
 
-/* Image Styling */
 #webdev-pic {
     width: 100%;
     max-width: 300px;
@@ -82,7 +97,6 @@ header {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Responsive Design */
 @media (max-width: 1024px) {
     .content {
         max-width: 80%;
@@ -91,7 +105,8 @@ header {
 
 @media (max-width: 768px) {
     #profile-pic {
-        width: 30vw;
+        width: 100vw;
+        height: 100vh;
     }
     .content {
         max-width: 90%;
@@ -99,7 +114,6 @@ header {
     }
 }
 
-/* Navigation Menu */
 .menu {
     background-color: gray;
     text-align: center;
@@ -136,15 +150,14 @@ header {
     text-decoration: line-through;
     color: black;
 }
+
 .footer {
-    position: fixed;
+    display: flex;
+    flex-direction: row-reverse;
+    position: relative;
     bottom: 0px;
     right: 0px;
     font-size: 0.9rem;
     color: #333;
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 0 10px;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     z-index: 4;
 }

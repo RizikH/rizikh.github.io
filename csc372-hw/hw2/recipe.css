@@ -1,44 +1,54 @@
-.menu{
-    background-color: gray;
-    text-align: center;
-    padding: 15px 0;
-    position: fixed;
-    width: 100%;
-    z-index: 3;
+body, pre{
+    color: #404040;
+    font-size: 11pt;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
-.menu ul{
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: inline-block;
+body{
+    background-image: url(./resources/silverware.jpg);
+    margin-right: 50px auto;
+    margin-left: 50px auto;
 }
-.menu li{
-    display: inline;
-    margin: 0 15px;
+.main-ul{
+    list-style-image: url(./resources/pie_icon.gif);
 }
-.menu a{
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-    font-family: Arial, Helvetica, sans-serif;
+.ordered-list{
     font-weight: bold;
 }
-.menu a:hover{
+#main-header {
+    background-color: #F0F0F0;
+    color: #a4a400;
+    text-align: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 22pt;
     text-decoration: underline;
 }
-.menu a[title=hw3]{
-    text-decoration: line-through;
-    color: black;
+.header{
+    color: #a4a400;
+    background-color: #F0F0F0;
+    font-size: 18pt;
+    text-decoration: underline;
+    display: inline;
+    padding: 0.2em;
+    margin: 0;
 }
-.footer {
-    position: fixed;
-    bottom: 0px;
-    right: 0px;
-    font-size: 0.9rem;
-    color: #333;
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 0 10px;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    z-index: 4;
+.user-comment{
+    background-color: #FFFFA8 ;
+    font-style: italic;
+    margin: 20px;
+}
+#links{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+a{
+    color: #A4A400;
+}
+abbr[title] {
+    text-decoration: 1px underline;
+    border-bottom: 1px dotted;
+}
+footer pre{
+    font-family: monospace;
 }
