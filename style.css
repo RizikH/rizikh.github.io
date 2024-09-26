@@ -4,9 +4,11 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     background-color: rgba(47, 146, 153, 0.641);
 }
-html{
+
+html {
     scroll-behavior: smooth;
 }
+
 header {
     display: flex;
     justify-content: center;
@@ -154,8 +156,8 @@ header {
     display: flex;
     flex-direction: row-reverse;
     position: relative;
-    bottom: 0px;
-    right: 0px;
+    bottom: 0;
+    right: 0;
     font-size: 0.9rem;
     color: #333;
     z-index: 4;
