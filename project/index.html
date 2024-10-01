@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mysterious Artifacts</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="icon" href="./resources/background.webp" type="image/webp">
+</head>
+
+<body id="index">
+    <header>
+        <nav class="navbar">
+            <ul>
+                <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="products.html"><i class="fas fa-box-open"></i> Products</a></li>
+                <li><a href="cart.html"><i class="fas fa-shopping-cart"></i> Cart</a></li>
+                <li><a href="#"><i class="fas fa-info-circle"></i> About</a></li>
+                <li class="search-bar">
+                    <input type="text" placeholder="Search...">
+                    <button type="button"><i class="fas fa-search"></i> Search</button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="videos">
+            <video id="main-page-background" class="active"
+                src="https://mysteriousartifacts.s3.amazonaws.com/index-bg.mp4" autoplay muted disablePictureInPicture
+                loop></video>
+            <video id="skull" class="inactive" src="https://mysteriousartifacts.s3.amazonaws.com/skull.mp4"></video>
+        </section>
+
+        <section class="cta">
+            <button id="cta-btn" class="cta-button">Discover the Power</button>
+        </section>
+
+        <audio id="index_bg_audio" src="./resources/sound-effects/lullaby-of-woe.mp3"></audio>
+        <audio id="cta-audio" src="./resources/sound-effects/creepy_laugh.mp3"></audio>
+        <audio id="trans-audio" src="./resources/sound-effects/electricity-long.mp3"></audio>
+
+        <section id="experience-modal" class="modal">
+            <div class="modal-content">
+                <h2>Choose Your Experience</h2>
+                <button id="full-experience" class="experience-button full-experience">Full Experience</button>
+                <button id="muted-experience" class="experience-button muted-experience">Semi Muted Experience</button>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footerContainer">
+            <p class="copyright">&copy; 2024 Mysterious Artifacts. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
