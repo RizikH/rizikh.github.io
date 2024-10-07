@@ -70,7 +70,7 @@ function toggleVideo(inactiveVid, activeVid) {
         activeVid.play();
     }
 }
-
+    
 function scrollToPosition(yPercentage) {
     const scrollTargetY = document.body.scrollHeight * (yPercentage / 100);
     const scrollTargetX = document.body.scrollWidth;

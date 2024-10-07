@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="rps-game.css">
+    
+    <!-- Firebase SDK (use the compat version for browser support) -->
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore-compat.js"></script>
+    
+    <!-- Firebase configuration -->
+    <script src="fire-base-configs.js"></script>
+
+    <!-- Game logic script -->
+    <script src="rps-game.js" defer></script>
+    
+    <title>Rock Paper Scissors</title>
+</head>
+
+<body>
+    <main>
+        <section id="welcome">
+            <h2>Welcome <span id="name"></span></h2>
+        </section>
+        <section id="user-login">
+            <div>
+                <label for="username">Enter Your Name:</label>
+                <input type="text" id="username" placeholder="Your name">
+                <button id="start-game">Start Game</button>
+                <p id="input-validity"></p>
+            </div>
+        </section>
+
+        <section class="user-choices">
+            <img src="res/rock.PNG" alt="rock">
+            <img src="res/paper.PNG" alt="paper">
+            <img src="res/scissors.PNG" alt="scissors">
+        </section>
+        <section class="data">
+            <table>
+                <tr>
+                    <td>User Wins:</td>
+                    <td class="value" id="user-wins">0</td>
+                </tr>
+                <tr>
+                    <td>Computer Wins:</td>
+                    <td class="value" id="computer-wins">0</td>
+                </tr>
+            </table>
+        </section>
+        <section class="computer-pick">
+            <img src="res/question-mark.PNG" alt="question-mark">
+        </section>
+        <table>
+            <tr>
+                <td>Ties:</td>
+                <td class="value" id="ties">0</td>
+            </tr>
+        </table>
+        <h2 id="results"></h2>
+    </main>
+
+</body>
+
+</html>

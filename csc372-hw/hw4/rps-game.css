@@ -1,0 +1,130 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    padding: 10px;
+}
+
+main {
+    padding: 20px;
+    background-color: #fff;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    height: 90vh;
+    width: 90vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#welcome{
+    display: none;
+}
+
+#user-login {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    color: white;
+}
+
+
+#user-login section {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 300px;
+    max-width: 90%;
+    text-align: center;
+}
+
+
+#user-login label {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 10px;
+    display: block;
+}
+
+
+#user-login input[type="text"] {
+    width: calc(20% - 20px);
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+#user-login button {
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#user-login button:hover {
+    background-color: #0056b3;
+}
+
+#input-validity {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 10px;
+}
+table {
+    margin: 10px;
+}
+
+table tr {
+    text-align: left;
+    font-size: large;
+    font-weight: bold;
+}
+
+.value {
+    text-align: right;
+}
+
+.user-choices {
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+    height: auto;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid black;
+}
+
+.computer-pick {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black;
+}
+
+.selected {
+    border: 1px solid red;
+}
+
+.computer-final-pick {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid blue;
+}
