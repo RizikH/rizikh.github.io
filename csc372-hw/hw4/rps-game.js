@@ -112,14 +112,14 @@ async function loadGameData(userId) {
 
         if (snapshot.exists) {
             const data = snapshot.data();
-            console.log(Loaded game data for user ${userId}:, data);
+            console.log(`Loaded game data for user ${userId}:`, data);
             return {
                 wins: data.userWins || 0,
                 losses: data.computerWins || 0,
                 ties: data.ties || 0
             };
         } else {
-            console.log(No data found for user ${userId});
+            console.log(`No data found for user ${userId}`);
             return {
                 wins: 0,
                 losses: 0,
@@ -151,7 +151,7 @@ async function saveGameData(userWins, computerWins, ties) {
             ties: Number(ties)
         });
 
-        console.log(Game data saved for user ${userId}: Wins: ${userWins}, Losses: ${computerWins}, Ties: ${ties});
+        console.log(`Game data saved for user ${userId}: Wins: ${userWins}, Losses: ${computerWins}, Ties: ${ties}`);
     } catch (error) {
         console.error("Error saving game data:", error);
     }
