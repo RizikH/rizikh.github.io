@@ -6,26 +6,20 @@ async function handleUsernameInput() {
     const popup = document.getElementById('user-login');
     const username = document.getElementById('username').value.trim();
     const inputValidity = document.getElementById('input-validity');
-    const welcomeText = document.querySelector('#welcome');
+    const welcomeText = document.querySelector('#welcome #name'); // Optimized DOM selection
 
     if (!username) {
         inputValidity.textContent = "Please enter a valid User Name to start the game.";
         return;
     }
 
-    welcomeText.querySelector('#name').textContent = username;
-    welcomeText.style.display = 'block';
+    welcomeText.textContent = username;
+    welcomeText.closest('#welcome').style.display = 'block'; // Use closest to update welcome text's parent display
 
     try {
         const userCredential = await firebase.auth().signInAnonymously();
         const userId = userCredential.user.uid;
-
-        const usernameIsAvailable = await checkUsernameAvailability(username, userId);
-        if (!usernameIsAvailable) {
-            inputValidity.textContent = "Username is already taken. Please choose another name.";
-            return;
-        }
-
+        
         await initializeGame(popup, username, userId);
     } catch (error) {
         console.error("Error during authentication or loading game data:", error);
@@ -36,7 +30,6 @@ async function handleUsernameInput() {
 async function checkUsernameAvailability(username, userId) {
     const usernameRef = firestore.collection('usernames').doc(username);
     const snapshot = await usernameRef.get();
-    
     if (snapshot.exists && snapshot.data().uid !== userId) {
         return false;
     }
@@ -51,7 +44,10 @@ async function initializeGame(popup, username, userId) {
     window.currentUsername = username;
 
     const gameData = await loadGameData(userId);
-    updateGameStats(gameData);
+
+    document.querySelector('#user-wins').textContent = gameData.wins;
+    document.querySelector('#computer-wins').textContent = gameData.losses;
+    document.querySelector('#ties').textContent = gameData.ties;
 
     setUpClickEvents();
 }
@@ -77,10 +73,25 @@ async function loadGameData(userId) {
     }
 }
 
-function updateGameStats(gameData) {
-    document.querySelector('#user-wins').textContent = gameData.wins;
-    document.querySelector('#computer-wins').textContent = gameData.losses;
-    document.querySelector('#ties').textContent = gameData.ties;
+async function saveGameData(userWins, computerWins, ties) {
+    const userId = window.currentUserId;
+    if (!userId) {
+        console.error("No user ID found to save the data.");
+        return;
+    }
+
+    try {
+        const gameDataRef = firestore.collection('results').doc(userId);
+        await gameDataRef.set({
+            userWins: Number(userWins),
+            computerWins: Number(computerWins),
+            ties: Number(ties)
+        });
+
+        console.log(`Game data saved for user ${userId}: Wins: ${userWins}, Losses: ${computerWins}, Ties: ${ties}`);
+    } catch (error) {
+        console.error("Error saving game data:", error);
+    }
 }
 
 function setUpClickEvents() {
@@ -88,12 +99,13 @@ function setUpClickEvents() {
     let currentChoice = null;
     let isComputerPicking = false;
 
-    userChoices.forEach((choice) => {
+    userChoices.forEach(choice => {
         choice.addEventListener('click', async () => {
             if (!isComputerPicking) {
                 if (currentChoice) {
                     currentChoice.classList.remove('selected');
                 }
+
                 choice.classList.add('selected');
                 currentChoice = choice;
 
@@ -108,31 +120,34 @@ function setUpClickEvents() {
 async function simulateComputerChoice(userChoice) {
     const choices = ["res/rock.PNG", "res/paper.PNG", "res/scissors.PNG"];
     const computerChoice = document.querySelector('.computer-pick img');
-    const resultValue = document.querySelector('#results');
-    resultValue.textContent = "";
+    let resultValue = document.querySelector('#results');
 
     let index = 0;
+    resultValue.textContent = "";
 
-    if (computerChoice.parentElement.classList.contains('computer-final-pick')) {
-        computerChoice.parentElement.classList.replace('computer-final-pick', 'computer-pick');
-    }
+    // Reset computer's selection style before starting the shuffle
+    computerChoice.parentElement.classList.replace('computer-final-pick', 'computer-pick');
 
-    await new Promise((picked) => {
-        const shuffleInterval = setInterval(() => {
+    await shuffleComputerChoice(computerChoice, choices, 3000);
+
+    computerChoice.src = choices[Math.floor(Math.random() * choices.length)];
+    computerChoice.parentElement.classList.add('computer-final-pick');
+    await determineResults(userChoice, computerChoice, resultValue);
+}
+
+async function shuffleComputerChoice(computerChoice, choices, duration) {
+    let index = 0;
+    return new Promise(resolve => {
+        const intervalId = setInterval(() => {
             computerChoice.src = choices[index];
             index = (index + 1) % choices.length;
         }, 500);
 
         setTimeout(() => {
-            clearInterval(shuffleInterval);
-            picked();
-        }, 3000);
+            clearInterval(intervalId);
+            resolve();
+        }, duration);
     });
-
-    computerChoice.src = choices[Math.floor(Math.random() * choices.length)];
-    computerChoice.parentElement.classList.add('computer-final-pick');
-    
-    await determineResults(userChoice, computerChoice, resultValue);
 }
 
 async function determineResults(user, computer, resultValue) {
@@ -155,35 +170,19 @@ async function determineResults(user, computer, resultValue) {
 
     if (userChoice === computerChoice) {
         resultValue.textContent = "It's a Tie!";
-        tie.textContent = (++ties).toString();
+        ties++;
+        tie.textContent = ties.toString();
     } else if (winConditions[userChoice] === computerChoice) {
         resultValue.textContent = "You Win!";
-        win.textContent = (++userWins).toString();
+        userWins++;
+        win.textContent = userWins.toString();
     } else {
         resultValue.textContent = "You Lose!";
-        lose.textContent = (++computerWins).toString();
+        computerWins++;
+        lose.textContent = computerWins.toString();
     }
 
     await saveGameData(userWins, computerWins, ties);
-}
-
-async function saveGameData(userWins, computerWins, ties) {
-    const userId = window.currentUserId;
-    if (!userId) {
-        console.error("No user ID found to save the data.");
-        return;
-    }
-
-    try {
-        const gameDataRef = firestore.collection('results').doc(userId);
-        await gameDataRef.set({
-            userWins: Number(userWins),
-            computerWins: Number(computerWins),
-            ties: Number(ties)
-        });
-    } catch (error) {
-        console.error("Error saving game data:", error);
-    }
 }
 
 function extractChoice(src) {
