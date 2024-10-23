@@ -1,0 +1,135 @@
+html {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+}
+
+body,
+html {
+    border: 0px;
+    margin: 0px;
+    background-color: rgba(0, 0, 0, 0.655);
+    color: white;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    flex: 1;
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: black;
+    justify-content: space-evenly;
+    width: 100vw;
+    top: 0;
+}
+
+.logo-header {
+    display: flex;
+    flex-direction: row;
+    margin-left: 10px;
+    margin-right: 20px;
+    justify-content: space-between;
+    align-items: center;
+    width: 20%;
+}
+
+.logo-header img {
+    width: 50px;
+}
+
+.search-bar {
+    flex: 1;
+    max-width: 50%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+}
+
+.search-bar #username {
+    flex: 1;
+    height: 30px;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+
+.search-bar button {
+    margin-left: 10px;
+}
+
+main {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    width: 100vw;
+    height: 100%;
+    align-items: flex-start;
+    padding: 20px;
+    gap: 20px;
+}
+
+.repo {
+    color: black;
+    box-sizing: border-box;
+    background-color: white;
+    padding: 20px;
+    height: fit-content;
+    width: 300px;
+    margin: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.repo-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+}
+
+.repo img {
+    width: 50px;
+    margin-bottom: 10px;
+}
+
+.repo a {
+    color: #0366d6;
+    font-weight: bold;
+    font-size: 25px;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.repo a:hover {
+    text-decoration: underline;
+}
+
+.repo p {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.repo ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    font-size: 15px;
+}
+
+.repo ul li {
+    margin-bottom: 5px;
+}
+.bold{
+    font-weight: bold;
+}
